@@ -18,3 +18,7 @@ for i in range(17,25):
 
 
 #Plotting
+
+plt.title("Assisted ventilation")
+for i in range(17, 25):
+    plt.bar(data.iloc[i]['Year'], data.iloc[i]['Number_with_outcome'], width=0.1, color='green')

@@ -15,7 +15,9 @@ for i in range(2084,2101):
     
 #Plotting
 
-years = data['Year']
-outcome= data['Number_with_outcome']
-
-plt.scatter(years, outcome)
+plt.title("Age group from 0 to 17 that Received Timely Medical exam ")
+plt.xlabel('Year')
+plt.ylabel('Number of outcomes')
+for i in range(2084,2101):
+    plt.bar(data.iloc[i]['Year'], data.iloc[i]['Number_with_outcome'], width=0.3, color='blue')
+   
