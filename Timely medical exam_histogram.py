@@ -1,5 +1,4 @@
 
-#Did not receive timely medical exam
 
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -11,17 +10,10 @@ data = pd.read_csv("data.csv")
 print('Age_group', 'Year','Denominator','Number_with_outcome')
 for i in range(2084,2102):
     print(data.iloc[i]['Age_group'], data.iloc[i]['Year'], data.iloc[i]['Denominator'],data.iloc[i]['Number_with_outcome'])
-    
-    
-#Plotting
 
-plt.title("Age group from 0 to 17 that Received Timely Medical exam ")
-plt.xlabel('Year')
-plt.ylabel('Number of outcomes')
-for i in range(2084,2102):
-    plt.bar(data.iloc[i]['Year'], data.iloc[i]['Number_with_outcome'], width=0.3, color='red')
-    
-    
 #histogram
-
-
+for i in range(2084,2102):
+    plt.hist(data.iloc[2084:2102]['Number_with_outcome'], bins=9, color='teal')
+    plt.title('Distribution of number of assisted timely medical exam from 2001 to 2018')
+    plt.xlabel('Number of assisted timely medical exam')
+    plt.ylabel('Number of years')

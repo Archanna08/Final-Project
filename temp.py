@@ -4,9 +4,6 @@ import matplotlib.pyplot as plt
 
 data = pd.read_csv("data.csv")
 
-print(data["Number_with_outcome"])
-
-plt.hist(data["Topic", "Number_with_outcome"].head(100))
 
 #filtration
 # assisted ventilation
@@ -19,6 +16,10 @@ for i in range(17,25):
 
 #Plotting
 
-plt.title("Assisted ventilation")
+plt.title("Assisted ventilation for babies(0-12 months)")
+plt.xlabel('Year')
+plt.ylabel('Number of outcomes')
 for i in range(17, 25):
-    plt.bar(data.iloc[i]['Year'], data.iloc[i]['Number_with_outcome'], width=0.1, color='green')
+    plt.bar(data.iloc[i]['Year'], data.iloc[i]['Number_with_outcome'], width=0.3, color='green')
+    plt.grid(True)
+
