@@ -15,9 +15,13 @@ denominator= data.iloc[15:25,7]
 percentage= outcome/denominator
 #iloc is used to choose the specific rows seeing on excel
 
-#Plotting
+# Possible Plotting
 plt.pie(percentage,labels=years)
-plt.title("Percentage of babies on assisted ventilation each year")
 
-
+plt.title("Assisted ventilation for babies(0-12 months)")
+plt.xlabel('Year')
+plt.ylabel('Number of outcomes')
+for i in range(17, 25):
+    plt.bar(data.iloc[i]['Year'], data.iloc[i]['Number_with_outcome'], width=0.3, color='green')
+    plt.grid(True)
 

@@ -11,3 +11,26 @@ for i in range(2986, 2998):
     print(data.iloc[i]['Age_group'], data.iloc[i]['Year'], data.iloc[i]['Insurance'],data.iloc[i]['Number_with_outcome'])
 
 #Plotting
+plt.figure(figsize=(6,5)) # size of the image
+plt.suptitle('Insurance Type for Depression related hospital admission in children aged 0-18')
+
+#2018    
+plt.subplot(2, 2, 1) #number of row, # of columns, position
+plt.pie([86, 101, 189], labels=['Public', 'Private', 'ALL'], colors=['blue','purple','yellow'])
+plt.title('2018')  
+
+#2019
+plt.subplot(2,2,2)
+plt.pie([90,113,212],labels=['Public', 'Private', 'ALL'], colors=['blue','purple','yellow'] )
+plt.title('2019')
+
+#2020
+plt.subplot(2,2,3)
+plt.pie([92,98,194],labels=['Public', 'Private', 'ALL'], colors=['blue','purple','yellow'])
+plt.title('2020')
+
+#2021
+plt.subplot(2,2,4)
+plt.pie([92,102,196],labels=['Public', 'Private', 'ALL'], colors=['blue','purple','yellow'] )
+plt.title('2020')
+        
