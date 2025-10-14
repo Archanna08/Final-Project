@@ -12,10 +12,12 @@ for i in range(15,25):
 years = data.iloc[15:25,6]
 outcome= data.iloc[15:25,9]
 denominator= data.iloc[15:25,7]
-percentage= outcome/denominator
+percentage= round(outcome/denominator*100, 2)
+print(years, percentage, end=' ')
 #iloc is used to choose the specific rows seeing on excel
 
 # Possible Plotting
+plt.title("Percentage of assisted ventilation for babies (0-12 months)")
 plt.pie(percentage,labels=years)
 
 plt.title("Assisted ventilation for babies(0-12 months)")

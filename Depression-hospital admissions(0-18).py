@@ -12,8 +12,8 @@ for i in range(2986, 2998):
 
 #Plotting
 plt.figure(figsize=(6,5)) # size of the image
-plt.suptitle('Insurance Type for Depression related hospital admission in children aged 0-18')
-
+plt.suptitle('Insurance Type for Depression related hospital admission in children aged 0-18', fontweight='bold')
+plt.subplots_adjust(hspace=0.3)
 #2018    
 plt.subplot(2, 2, 1) #number of row, # of columns, position
 plt.pie([86, 101, 189], labels=['Public', 'Private', 'ALL'], colors=['blue','purple','yellow'])

@@ -17,6 +17,6 @@ for i in range (1914,1935):
     plt.xlabel('Year')
     plt.ylabel('Number with condition')
     plt.title('Number of Authorized Psychotric medications from 2003-2013 for children(0-17)')
-    
+plt.grid(True)
 
     
