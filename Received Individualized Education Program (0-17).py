@@ -7,7 +7,7 @@ data = pd.read_csv("data.csv")
 
 
 #filtration
-print('Age_group', 'Period','Number_with_outcome') #titles
+print('Age_group', 'Period','Number_with_outcome') 
 for i in range(2107,2133):
     print(data.iloc[i]['Age_group'],data.iloc[i]['Year'], data.iloc[i]['Period'],data.iloc[i]['Number_with_outcome'])
 
@@ -16,4 +16,6 @@ for i in range(2107,2133):
     plt.hist(data.iloc[2107:2133]['Number_with_outcome'], bins=6, color='skyblue', edgecolor='white')
     plt.title('Distribution of Number of teens(0-17) who received Individualized Program Education ')
     plt.ylabel('Number of years in each range')
-    plt.xlabel('Number of teens who received Individualized Program Education')
+    plt.xlabel('Range of Number of teens who received Individualized Program Education')
+    
+# Depending on the number of outcomes, the y axis shows how many years had teens with Individualized Program education according to a range 50-100, 100-150 etc..
