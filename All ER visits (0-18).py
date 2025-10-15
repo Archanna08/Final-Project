@@ -2,7 +2,7 @@
 
 import pandas as pd
 import matplotlib.pyplot as plt
-import numpy as np
+import numpy as np 
 
 data = pd.read_csv("data.csv")
 
@@ -21,3 +21,5 @@ for i in range (2293,2305):
 plt.xlabel('Year')
 plt.ylabel('Number of ER visits')
 plt.title('Number of ER visits for safety purposes from 2003-2013 for children(0-18)')
+
+#IM TIRED OF THIS PLZ WORK
