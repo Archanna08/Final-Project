@@ -17,5 +17,8 @@ for i in range(2107,2133):
     plt.title('Distribution of Number of teens(0-17) who received Individualized Program Education ')
     plt.ylabel('Number of years in each range')
     plt.xlabel('Range of Number of teens who received Individualized Program Education')
-    
-# Depending on the number of outcomes, the y axis shows how many years had teens with Individualized Program education according to a range 50-100, 100-150 etc..
+
+#Description: This histogram shows the distribution of the number of teens (ages 0–17) who received Individualized Program Education over the years 1998–2023.
+#In short, it summarizes how frequently the yearly counts fell into different ranges, highlighting periods with higher or lower numbers of teens receiving Individualized Program Education.
+#X-axis: Ranges of the number of teens who received Individualized Program Education (e.g., 50–100, 100–150, …).
+#Y-axis: Number of years in which the number of teens fell into each range.
