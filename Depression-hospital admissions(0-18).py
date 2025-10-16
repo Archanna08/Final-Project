@@ -31,16 +31,8 @@ plt.title('2020')
 
 #2021
 plt.subplot(2,2,4)
-<<<<<<< HEAD
-<<<<<<< HEAD
-plt.pie([92,102,196],labels=['Public', 'Private', 'ALL'], colors=['blue','purple','yellow'] )
+plt.pie([92,102],labels=['Public', 'Private'], colors=['blue','purple'] )
 plt.title('2021')
-        
-=======
-=======
->>>>>>> 59c7ac49ade3f24c517eb7a7290497671889e5e3
-plt.pie([92,102], labels=['Public', 'Private'], colors=['blue','purple'] )
-plt.title('2020')
 
 plt.savefig("Depression_Hospital_Admissions(0-18)_Pie_Subplots.png")
 #Description: 
@@ -49,7 +41,4 @@ plt.savefig("Depression_Hospital_Admissions(0-18)_Pie_Subplots.png")
 #classed according to the type of healthcare facility (Public, Private, and All).
 #X-axis: Year (2018,2019,2020 and 2021)
 #Y-axis: Number of hospital admissions
-<<<<<<< HEAD
->>>>>>> 59c7ac49ade3f24c517eb7a7290497671889e5e3
-=======
->>>>>>> 59c7ac49ade3f24c517eb7a7290497671889e5e3
+
