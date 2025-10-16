@@ -29,14 +29,7 @@ plt.xlabel('Year')
 plt.ylabel('Number of outcomes')
 for i in range(2084,2102):
     plt.bar(data.iloc[i]['Year'], data.iloc[i]['Number_with_outcome'], width=0.3, color='red')
-<<<<<<< HEAD
-<<<<<<< HEAD
-    plt.grid(True)
-     
-#histogram
-=======
-=======
->>>>>>> 59c7ac49ade3f24c517eb7a7290497671889e5e3
+    plt.grid(True)     
 plt.savefig("Timely_Exam_Bar_Graph")
 
 #Description: 
@@ -45,8 +38,4 @@ plt.savefig("Timely_Exam_Bar_Graph")
 #Line graph shows results in percentage while the bar graph has exact numbers
 #X-axis (Year): Spans from 1998 to 2023.
 #Y-axis (Number of outcomes): Represents the number of children who did not receive a timely medical exam each year.
-<<<<<<< HEAD
->>>>>>> 59c7ac49ade3f24c517eb7a7290497671889e5e3
-=======
->>>>>>> 59c7ac49ade3f24c517eb7a7290497671889e5e3
 

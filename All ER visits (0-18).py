@@ -9,17 +9,24 @@ data = pd.read_csv("data.csv")
 #Filtration
 
 print('Age_group', 'Year','Number_with_outcome')
-for i in range(2293,2305):
+for i in range(2251,2266):
     print(data.iloc[i]['Age_group'], data.iloc[i]['Year'], data.iloc[i]['Insurance'],data.iloc[i]['Number_with_outcome'])
 
-#Plotting- Scatter
-for i in range (2293,2305):
-    plt.plot(data.iloc[i]['Year'],data.iloc[i]['Number_with_outcome'],linestyle='-')
-    if data.iloc[i]['Insurance']== 'ALL':
-        plt.scatter(data.iloc[i]['Year'],data.iloc[i]['Number_with_outcome'], color='orange')
-        plt.plot(data.iloc[2293:2304]['Year'], data.iloc[2293:2304]['Number_with_outcome'], linestyle='-', color='black')
+years = data.iloc[[2251, 2254, 2257, 2260, 2263],6] #Another way to filter the data for graph
+outcome= data.iloc[[2251, 2254, 2257, 2260, 2263],9]
+denominator= data.iloc[[2251, 2254, 2257, 2260, 2263],7]
+print(outcome)
+
+#Line Graph
+plt.plot(years, outcome, color='orange', linestyle='-', marker='o')
 plt.xlabel('Year')
 plt.ylabel('Number of ER visits')
-plt.title('Number of ER visits for safety purposes from 2003-2013 for children(0-18)')
+plt.title('ER visits for safety purposes from 2017-2021 for ages(0-18)')
+plt.grid(True)
+plt.savefig("All_ER_Visits(0-18)_Line_Graph")
 
-#IM TIRED OF THIS PLZ WORK
+#Description: 
+#This scatter plot shows data from 2017 to 2021 presenting the number of ER visits
+#done by children (0-18) for safety purposes without considering the type of insurance. 
+#X-axis: Years from 2017-2021
+#Y-axis: Number of ER visits
