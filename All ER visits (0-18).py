@@ -7,14 +7,12 @@ data = pd.read_csv("data.csv")
 
 #Filtration
 
-print('Age_group', 'Year','Number_with_outcome')
+print('Age_group', 'Year','Number_with_outcome') #The for loop is used to check the data we want to extract.
 for i in range(2251,2266):
     print(data.iloc[i]['Age_group'], data.iloc[i]['Year'], data.iloc[i]['Insurance'],data.iloc[i]['Number_with_outcome'])
 
 years = data.iloc[[2251, 2254, 2257, 2260, 2263],6] #Another way to filter the data for graph
-outcome= data.iloc[[2251, 2254, 2257, 2260, 2263],9]
-denominator= data.iloc[[2251, 2254, 2257, 2260, 2263],7]
-print(outcome)
+outcome= data.iloc[[2251, 2254, 2257, 2260, 2263],9] #Uses iloc to select certain rows (in smaller []) and column (after ,)
 
 #Line Graph
 plt.plot(years, outcome, color='orange', linestyle='-', marker='o')
