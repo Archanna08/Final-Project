@@ -5,7 +5,7 @@ Created on Fri Oct 31 21:57:29 2025
 @author: Allison Leung, Archanna Nagesan
 
 This script includes all the graphs for the dataset that includes San Francesco censuses over multiple years 
-about different medical conditions
+about different medical conditions, using pandas to fliter and matplotlib to plot.
 """
 import pandas as pd
 import matplotlib.pyplot as plt
