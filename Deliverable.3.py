@@ -36,7 +36,10 @@ print(Used_Data[cat_variable].describe(include='object'))
 
 #https://readmedium.com/8-seaborn-plots-for-univariate-exploratory-data-analysis-eda-in-python-9d280b6fe67f
 #4. Univariate Graphical EDA
-
+#Year
+sns.histplot(data=Used_Data, x= 'Year',  bins= 10)
+#Denominator
+sns.displot(data= Used_Data, x= '', )
 #5. Multivariate Non-Graphical EDA
 
 #6. Multivariate Graphical EDA
