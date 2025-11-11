@@ -22,6 +22,8 @@ Used_Data=pd.DataFrame.drop_duplicates(Used_Data)
 Used_Data=pd.DataFrame(Used_Data).dropna(subset=["Year"]) #dropna(subset) drops rows with null value in a certain column (subset)
 null=pd.DataFrame.isnull(Used_Data[Used_Data["Year"]])
 pd.Raw_dataFrame.sum(null)
+
+
 #3. Univariate Non-Graphical EDA
 #numerical variable
 num_variable= [ "Denominator", "Number_with_outcome", "Rate_SF_pop"]
@@ -35,17 +37,19 @@ cat_variable= ["Age_group","Sex", "Health_condition-Data_source","Insurance", "P
 print(Used_Data[cat_variable].describe(include='object'))
 #top=mode, freq count=count
 
-#4. Univariate Graphical EDA
+#4. Univariate Graphical EDA ?????????????????
 #Rate
 sns.displot(data=Used_Data, x= 'Rate_SF_pop', multiple="stack", binrange= (0,200), hue="Race_ethnicity")
 #Denominator
 nia= Used_Data[(Used_Data["Sex"]!="ALL") & (Used_Data["Health_condition-Data_source"]=="ALL ER VISITS - ER VISITS")]
 nia["percentage"]= nia["Number_with_outcome"]/nia["Denominator"]
 sns.displot(data=nia, x= 'percentage', multiple="dodge", hue="Sex", binrange=(0,1.5))
-for i in num_variable:
-    sns.displot(data= Used_Data, x= i, hue= "Race_ethnicity", multiple= "stack")
+
 #
 #5. Multivariate Non-Graphical EDA
+ha=pd.crosstab(Used_Data["Year"], Used_Data["Insurance"])
+he=pd.crosstab(Used_Data["Primary_Neighborhood"], Used_Data["Insurance"])
+ho=pd.crosstab(index= [Used_Data["Year"], Used_Data["Race_ethnicity"]], columns= Used_Data["Sex"])
 
 #6. Multivariate Graphical EDA
 #6.1 Statistical Relationships
