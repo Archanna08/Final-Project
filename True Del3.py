@@ -70,7 +70,8 @@ print(pd.DataFrame.nunique(Data_sex)) #DELETE AFTER, JUST USED FOR CHECKING
 #6. Multivariate Graphical EDA
     #6.1 Statistical Relationships
 #a
-sns.relplot( data=G_All_ER_visits , x='Denominator', y='Number_with_outcome', col='Sex').set(title='Number of People who Visited the ER')
+g= sns.relplot( data=G_All_ER_visits , x='Denominator', y='Number_with_outcome', col='Sex')
+g.fig.suptitle('Number of People who Visited the ER', y=1.1)
 #b
 sns.relplot(data= G_Depression_admissions, x= 'Number_with_outcome', y='Denominator', hue='Sex', col='Year', size='Age_group', col_wrap=3).set(title='Number of People that got Admitted for Depressions in the Survey')
 #c
