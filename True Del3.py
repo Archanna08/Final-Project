@@ -70,44 +70,45 @@ print(pd.DataFrame.nunique(Data_sex)) #DELETE AFTER, JUST USED FOR CHECKING
 #6. Multivariate Graphical EDA
     #6.1 Statistical Relationships
 #a
-sns.relplot( data=G_All_ER_visits , x='Denominator', y='Number_with_outcome', col='Sex').set(title='Number of people who visited the ER')
+sns.relplot( data=G_All_ER_visits , x='Denominator', y='Number_with_outcome', col='Sex').set(title='Number of People who Visited the ER')
 #b
-sns.relplot(data= G_Depression_admissions, x= 'Number_with_outcome', y='Denominator', hue='Sex', col='Year', size='Age_group', col_wrap=3).set(title='Number of people that got admitted for depressions in the Survey')
+sns.relplot(data= G_Depression_admissions, x= 'Number_with_outcome', y='Denominator', hue='Sex', col='Year', size='Age_group', col_wrap=3).set(title='Number of People that got Admitted for Depressions in the Survey')
 #c
-sns.relplot(data=G_Timely_med_exam, x='Year',y='Rate_SF_pop', kind='line').set(title='Rate of children getting timely medical exams from 1998-2023')
+sns.relplot(data=G_Timely_med_exam, x='Year',y='Rate_SF_pop', kind='line').set(title='Percentage of Children getting Timely Medical Exams from 1998-2023')
 #d ?????
 sns.relplot(data= G_Alcohol, x='Denominator', y='Number_with_outcome', kind='line',errorbar='sd').set(title='
 
 #e
-sns.lmplot(data = G_Pub_Pri_Insurance , x= 'Denominator', y='Number_with_outcome', hue='Health_condition-Data_source').set(title='Number of pregnant women with different Insurances from CDPH Birth Records')
+sns.lmplot(data = G_Pub_Pri_Insurance , x= 'Denominator', y='Number_with_outcome', hue='Health_condition-Data_source').set(title='Number of Pregnant Women with Different Insurances from CDPH Birth Records')
 
     #6.2 Categorical Raw_data
-#a
-sns.catplot(data=G_Timely_med_exam , x= 'Year', y='Rate_SF_pop', jitter= False )#spacing plz
+#a #spacing
+sns.catplot(data=G_Timely_med_exam , x= 'Year', y='Rate_SF_pop', jitter= False ).set(title='Percentage of Timely Medical Exam from 1998-2023')
+
 #b
-sns.catplot(data= G_Depression_admissions, x='Year', y='Number_with_outcome', jitter=True)
+sns.catplot(data= G_Depression_admissions, x='Year', y='Number_with_outcome', jitter=True).set(title='Number of Depression Admissions from 2017-2021')
 #c
-sns.catplot(data= G_HIV_tests, x='Year', y='Number_with_outcome', hue='Sex')
+sns.catplot(data= G_HIV_tests, x='Year', y='Number_with_outcome', hue='Sex').set(title='Number of Students that havent taken the HIV test')
 #d
-sns.catplot(data= G_HIV_tests , x= 'Age_group', y= 'Denominator', hue='Sex', kind='box')
+sns.catplot(data= G_HIV_tests , x= 'Age_group', y= 'Denominator', hue='Sex', kind='box').set(title='Percentage of Age group that never took the HIV test')
 #e
-sns.catplot(data= G_Depression_admissions, x='Year', y='Number_with_outcome', kind='boxen')
+sns.catplot(data= G_Depression_admissions, x='Year', y='Number_with_outcome', kind='boxen').set(title='Number of People that got Admitted for Depressions from 2017-2021')
 #f
-sns.catplot( data=G_All_ER_visits, x='Year', y='Number_with_outcome',  hue='Sex', kind='violin', split = True )
+sns.catplot( data=G_All_ER_visits, x='Year', y='Rate_SF_pop',  hue='Sex', kind='violin', split = True ).set(title='Percentage of People that went to the ER from 2017-2021')
 #g
-g=sns.catplot( data= G_Screentime, x='Age_group', y='Rate_SF_pop', kind='violin', inner=None)
-sns.swarmplot( data= G_Screentime, x='Age_group', y='Rate_SF_pop', color='k', ax=g.ax)
-#h
-sns.catplot(data= G_Depression_admissions, x='Year', y='Number_with_outcome',hue='Insurance', kind='bar', errorbar=('pi',97)) #spacing
-#i
-sns.catplot(data= G_Pub_Pri_Insurance, x='Health_condition-Data_source',y='Rate_SF_pop', hue='Sex',errorbar=('pi', 90), kind='point' )#spacing
+g=sns.catplot( data= G_Screentime, x='Age_group', y='Number_with_outcome', kind='violin', inner=None)
+sns.swarmplot( data= G_Screentime, x='Age_group', y='Number_with_outcome', color='k', ax=g.ax).set(title='Percentage of Middle schoolers Screentime')
+#h 
+sns.catplot(data= G_Depression_admissions, x='Year', y='Number_with_outcome',hue='Insurance', kind='bar', errorbar=('pi',97)).set(title='Number of People Admitted for Depression and their Insurance')  
+#i #spacing
+sns.catplot(data= G_Pub_Pri_Insurance, x='Health_condition-Data_source',y='Rate_SF_pop', hue='Sex',errorbar=('pi', 90), kind='point' ).set(title'Percentage of People with Public Insurance vs Private')
 #j????EACH CATEGORY?
 sns.catplot(data= G_Alcohol, )
 
     #6.3 Bivariate Distributions
 #a
-sns.displot(data= G_Screentime, x='Denominator', y='Number_with_outcome', binwidth=(60,50), cbar=True)
+sns.displot(data= G_Screentime, x='Denominator', y='Number_with_outcome', binwidth=(60,50), cbar=True).set(title='Middle Schoolers Screentime')
 #b
-sns.displot(data= G_Pub_Pri_Insurance, x='Year', y='Rate_SF_pop',kind='kde')
+sns.displot(data= G_Pub_Pri_Insurance, x='Year', y='Rate_SF_pop',kind='kde').set(title='Percentage of People with Public vs Private Insurance')
 #c
-sns.displot(data= G_Alcohol, x='Year', y='Rate_SF_pop',hue='Sex',kind='kde')
+sns.displot(data= G_Alcohol, x='Year', y='Rate_SF_pop',hue='Sex',kind='kde').set(title='Percentage of People Alcoholic from 2016-2022')
