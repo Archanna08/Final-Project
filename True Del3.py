@@ -22,20 +22,17 @@ Used_Data=pd.DataFrame.drop_duplicates(Used_Data)
     #Overall filtered dataset that we're gonna use
 Used_Data=pd.DataFrame(Used_Data).dropna(subset=["Year"]) #dropna(subset) drops rows with null value in a certain column (subset)
 print(pd.DataFrame.isnull(Used_Data["Year"]).sum()) #To check if the rows were dropped
-Used_Data["Percentage"]=round(Used_Data["Number_with_outcome"]/Used_Data["Denominator"]*100, 2)
 
     #The sub-datasets that are used for the graphs to answer specific questions
-G_Assisted_Vent = Used_Data.iloc[4:14]
+G_Screentime = Used_Data.loc[(Used_Data['Health_condition-Data_source']=='3 OR MORE HOURS SCREENTIME - YRBS SURVEY') & (Used_Data['Age_group'] !='GRADE6to8')]
 G_All_ER_visits = Used_Data.loc[(Used_Data['Health_condition-Data_source']=='ALL ER VISITS - ER VISITS')]
 G_Authorized_meds = Used_Data.loc[(Used_Data['Health_condition-Data_source']=='AUTHORIZED FOR PSYCHOTROPIC MEDICATIONS - CHILD WELFARE') & (Used_Data['Age_group']=='0to17')]
 G_Depression_admissions = Used_Data.loc[(Used_Data['Health_condition-Data_source']=='DEPRESSION - HOSPITAL ADMISSIONS')]
 G_Pub_Pri_Insurance = Used_Data.loc[(Used_Data['Health_condition-Data_source']=='PUBLIC INSURANCE - CDPH BIRTH RECORDS') 
                                   | (Used_Data['Health_condition-Data_source']=='PRIVATE INSURANCE - CDPH BIRTH RECORDS')]
         # | is equivalent to or 
-G_Ind_Edu = Used_Data.loc[Used_Data['Health_condition-Data_source']=='RECEIVED INDIVIDUALIZED EDUCATION PROGRAM - CHILD WELFARE']
+G_Alcohol = Used_Data.loc[Used_Data['Health_condition-Data_source']=='ALCOHOL - ER VISITS']
 G_Timely_med_exam = Used_Data.loc[Used_Data['Health_condition-Data_source']=='DID NOT RECEIVE TIMELY MEDICAL EXAM - CHILD WELFARE']
-
-#Note to archanna: maybe??? if we need; compare different grades
 G_HIV_tests = Used_Data.loc[(Used_Data['Health_condition-Data_source']=='NEVER TESTED FOR HIV - YRBS SURVEY') & (Used_Data['Age_group'] != 'GRADE9to12')]
 
     #Sub-datasets for Multiv. non-graph EDA (Gets rid of 'All' as a varible in specified column)
@@ -45,7 +42,7 @@ Data_Insurance = Used_Data.loc[Used_Data['Insurance'] != 'ALL']
 
 #3. Univariate Non-Graphical EDA
     #numerical variable
-variable_num= [ "Denominator", "Number_with_outcome", "Rate_SF_pop", "Percentage"]
+variable_num= [ "Denominator", "Number_with_outcome", "Rate_SF_pop"]
 var_num_summary = Used_Data.describe()
 print(var_num_summary)
 print(Used_Data[variable_num].skew(), Used_Data[variable_num].kurt())
@@ -72,7 +69,45 @@ NG_Sex_Age_Insur = pd.crosstab([Data_sex["Age_group"], Data_sex["Sex"]], columns
 print(pd.DataFrame.nunique(Data_sex)) #DELETE AFTER, JUST USED FOR CHECKING
 #6. Multivariate Graphical EDA
     #6.1 Statistical Relationships
+#a
+sns.relplot( data=G_All_ER_visits , x='Denominator', y='Number_with_outcome', col='Sex')
+#b
+sns.relplot(data= G_Depression_admissions, x= 'Number_with_outcome', y='Denominator', hue='Sex', col='Year', size='Age_group', col_wrap=3)
+#c
+sns.relplot(data=G_Timely_med_exam, x='Year',y='Rate_SF_pop', kind='line')
+#d ?????
+sns.relplot(data= G_Alcohol, x='Denominator', y='Number_with_outcome', kind='line',errorbar='sd')
+
+#e
+sns.lmplot(data = G_Pub_Pri_Insurance , x= 'Denominator', y='Number_with_outcome', hue='Health_condition-Data_source')
 
     #6.2 Categorical Raw_data
+#a
+sns.catplot(data=G_Timely_med_exam , x= 'Year', y='Rate_SF_pop', jitter= False )#spacing plz
+#b
+sns.catplot(data= G_Depression_admissions, x='Year', y='Number_with_outcome', jitter=True)
+#c
+sns.catplot(data= G_HIV_tests, x='Year', y='Number_with_outcome', hue='Sex')
+#d
+sns.catplot(data= G_HIV_tests , x= 'Age_group', y= 'Denominator', hue='Sex', kind='box')
+#e
+sns.catplot(data= G_Depression_admissions, x='Year', y='Number_with_outcome', kind='boxen')
+#f
+sns.catplot( data=G_All_ER_visits, x='Year', y='Number_with_outcome',  hue='Sex', kind='violin', split = True )
+#g
+g=sns.catplot( data= G_Screentime, x='Age_group', y='Rate_SF_pop', kind='violin', inner=None)
+sns.swarmplot( data= G_Screentime, x='Age_group', y='Rate_SF_pop', color='k', ax=g.ax)
+#h
+sns.catplot(data= G_Depression_admissions, x='Year', y='Number_with_outcome',hue='Insurance', kind='bar', errorbar=('pi',97)) #spacing
+#i
+sns.catplot(data= G_Pub_Pri_Insurance, x='Health_condition-Data_source',y='Rate_SF_pop', hue='Sex',errorbar=('pi', 90), kind='point' )#spacing
+#j????EACH CATEGORY?
+sns.catplot(data= G_Alcohol, )
 
-    #6.3 Bivariate Distributions 
+    #6.3 Bivariate Distributions
+#a
+sns.displot(data= G_Screentime, x='Denominator', y='Number_with_outcome', binwidth=(60,50), cbar=True)
+#b
+sns.displot(data= G_Pub_Pri_Insurance, x='Year', y='Rate_SF_pop',kind='kde')
+#c
+sns.displot(data= G_Alcohol, x='Year', y='Rate_SF_pop',hue='Sex',kind='kde')
