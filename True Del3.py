@@ -92,7 +92,7 @@ sns.catplot(data= G_Depression_admissions, x='Year', y='Number_with_outcome', ji
 #c
 sns.catplot(data= G_HIV_tests, x='Year', y='Number_with_outcome', hue='Sex').set(title='Number of Students that havent taken the HIV test')
 #d
-sns.catplot(data= G_HIV_tests , x= 'Age_group', y= 'Number_with_outcome', hue='Sex', kind='box').set(title='Percentage of Age group that never took the HIV test')
+sns.catplot(data= G_HIV_tests , x= 'Sex', y= 'Number_with_outcome', hue='Age_group', kind='box').set(title='Percentage of Age group that never took the HIV test')
 #e
 sns.catplot(data= G_Depression_admissions, x='Year', y='Number_with_outcome', kind='boxen').set(title='Number of People that got Admitted for Depressions from 2017-2021')
 #f
