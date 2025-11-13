@@ -73,7 +73,8 @@ print(pd.DataFrame.nunique(Data_sex)) #DELETE AFTER, JUST USED FOR CHECKING
 g= sns.relplot( data=G_All_ER_visits , x='Denominator', y='Number_with_outcome', col='Sex')
 g.fig.suptitle('Number of People who Visited the ER', y=1.1)
 #b
-sns.relplot(data= G_Depression_admissions, x= 'Number_with_outcome', y='Denominator', hue='Sex', col='Year', size='Age_group', col_wrap=3).set(title='Number of People that got Admitted for Depressions in the Survey')
+g=sns.relplot(data= G_Depression_admissions, x= 'Number_with_outcome', y='Denominator', hue='Sex', col='Year', size='Age_group', col_wrap=3)
+g.fig.suptitle('Number of People that got Admitted for Depressions in the Survey', y=1.05)
 #c
 sns.relplot(data=G_Timely_med_exam, x='Year',y='Rate_SF_pop', kind='line').set(title='Percentage of Children getting Timely Medical Exams from 1998-2023')
 #d ?????
@@ -91,7 +92,7 @@ sns.catplot(data= G_Depression_admissions, x='Year', y='Number_with_outcome', ji
 #c
 sns.catplot(data= G_HIV_tests, x='Year', y='Number_with_outcome', hue='Sex').set(title='Number of Students that havent taken the HIV test')
 #d
-sns.catplot(data= G_HIV_tests , x= 'Age_group', y= 'Denominator', hue='Sex', kind='box').set(title='Percentage of Age group that never took the HIV test')
+sns.catplot(data= G_HIV_tests , x= 'Age_group', y= 'Number_with_outcome', hue='Sex', kind='box').set(title='Percentage of Age group that never took the HIV test')
 #e
 sns.catplot(data= G_Depression_admissions, x='Year', y='Number_with_outcome', kind='boxen').set(title='Number of People that got Admitted for Depressions from 2017-2021')
 #f
@@ -102,7 +103,7 @@ sns.swarmplot( data= G_Screentime, x='Age_group', y='Number_with_outcome', color
 #h 
 sns.catplot(data= G_Depression_admissions, x='Year', y='Number_with_outcome',hue='Insurance', kind='bar', errorbar=('pi',97)).set(title='Number of People Admitted for Depression and their Insurance')  
 #i #spacing
-sns.catplot(data= G_Pub_Pri_Insurance, x='Health_condition-Data_source',y='Rate_SF_pop', hue='Sex',errorbar=('pi', 90), kind='point' ).set(title'Percentage of People with Public Insurance vs Private')
+sns.catplot(data= G_Pub_Pri_Insurance, x='Health_condition-Data_source',y='Rate_SF_pop', hue='Sex', errorbar=('pi', 90), kind='point' ).set(title='Percentage of People with Public Insurance vs Private')
 #j????EACH CATEGORY?
 sns.catplot(data= G_Alcohol, )
 
