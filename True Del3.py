@@ -70,16 +70,16 @@ print(pd.DataFrame.nunique(Data_sex)) #DELETE AFTER, JUST USED FOR CHECKING
 #6. Multivariate Graphical EDA
     #6.1 Statistical Relationships
 #a
-sns.relplot( data=G_All_ER_visits , x='Denominator', y='Number_with_outcome', col='Sex')
+sns.relplot( data=G_All_ER_visits , x='Denominator', y='Number_with_outcome', col='Sex').set(title='Number of people who visited the ER')
 #b
-sns.relplot(data= G_Depression_admissions, x= 'Number_with_outcome', y='Denominator', hue='Sex', col='Year', size='Age_group', col_wrap=3)
+sns.relplot(data= G_Depression_admissions, x= 'Number_with_outcome', y='Denominator', hue='Sex', col='Year', size='Age_group', col_wrap=3).set(title='Number of people that got admitted for depressions in the Survey')
 #c
-sns.relplot(data=G_Timely_med_exam, x='Year',y='Rate_SF_pop', kind='line')
+sns.relplot(data=G_Timely_med_exam, x='Year',y='Rate_SF_pop', kind='line').set(title='Rate of children getting timely medical exams from 1998-2023')
 #d ?????
-sns.relplot(data= G_Alcohol, x='Denominator', y='Number_with_outcome', kind='line',errorbar='sd')
+sns.relplot(data= G_Alcohol, x='Denominator', y='Number_with_outcome', kind='line',errorbar='sd').set(title='
 
 #e
-sns.lmplot(data = G_Pub_Pri_Insurance , x= 'Denominator', y='Number_with_outcome', hue='Health_condition-Data_source')
+sns.lmplot(data = G_Pub_Pri_Insurance , x= 'Denominator', y='Number_with_outcome', hue='Health_condition-Data_source').set(title='Number of pregnant women with different Insurances from CDPH Birth Records')
 
     #6.2 Categorical Raw_data
 #a
