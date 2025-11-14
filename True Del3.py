@@ -78,14 +78,14 @@ g.fig.suptitle('Number of People that got Admitted for Depressions in the Survey
 #c
 sns.relplot(data=G_Timely_med_exam, x='Year',y='Rate_SF_pop', kind='line').set(title='Percentage of Children getting Timely Medical Exams from 1998-2023')
 #d ?????
-sns.relplot(data= G_Alcohol, x='Denominator', y='Number_with_outcome', kind='line',errorbar='sd').set(title='
+sns.relplot(data= G_Alcohol, x='Denominator', y='Number_with_outcome', kind='line',errorbar='sd', height=4,aspect=2).set(title='Number of Alcoholics among People who took the Survey')
 
 #e
 sns.lmplot(data = G_Pub_Pri_Insurance , x= 'Denominator', y='Number_with_outcome', hue='Health_condition-Data_source').set(title='Number of Pregnant Women with Different Insurances from CDPH Birth Records')
 
     #6.2 Categorical Raw_data
 #a #spacing
-sns.catplot(data=G_Timely_med_exam , x= 'Year', y='Rate_SF_pop', jitter= False ).set(title='Percentage of Timely Medical Exam from 1998-2023')
+sns.catplot(data=G_Timely_med_exam , x= 'Year', y='Rate_SF_pop', jitter= False,  height=4,aspect=4 ).set(title='Percentage of Timely Medical Exam from 1998-2023')
 
 #b
 sns.catplot(data= G_Depression_admissions, x='Year', y='Number_with_outcome', jitter=True).set(title='Number of Depression Admissions from 2017-2021')
@@ -102,8 +102,10 @@ g=sns.catplot( data= G_Screentime, x='Age_group', y='Number_with_outcome', kind=
 sns.swarmplot( data= G_Screentime, x='Age_group', y='Number_with_outcome', color='k', ax=g.ax).set(title='Percentage of Middle schoolers Screentime')
 #h 
 sns.catplot(data= G_Depression_admissions, x='Year', y='Number_with_outcome',hue='Insurance', kind='bar', errorbar=('pi',97)).set(title='Number of People Admitted for Depression and their Insurance')  
-#i #spacing
-sns.catplot(data= G_Pub_Pri_Insurance, x='Health_condition-Data_source',y='Rate_SF_pop', hue='Sex', errorbar=('pi', 90), kind='point' ).set(title='Percentage of People with Public Insurance vs Private')
+#i 
+sns.catplot(data= G_Pub_Pri_Insurance, x='Health_condition-Data_source',y='Rate_SF_pop', hue='Sex', errorbar=('pi', 90), kind='point', height=4,aspect=2 ).set(title='Percentage of People with Public Insurance vs Private')
+
+
 #j????EACH CATEGORY?
 sns.catplot(data= G_Alcohol, )
 
