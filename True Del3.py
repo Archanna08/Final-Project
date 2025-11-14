@@ -50,7 +50,8 @@ print(Used_Data[variable_num].skew(), Used_Data[variable_num].kurt(), Used_Data[
 
     #categorical variable
 variable_cat= ["Age_group","Sex", "Health_condition-Data_source","Insurance", "Primary_Neighborhood", "Year", "Race_ethnicity"]
-print(Used_Data[variable_cat].describe(include='object'))
+pd.set_option('display.max_columns', None) #function to display all columns
+print(Used_Data[variable_cat].astype(str).describe()) #converting year as strings
        #top=mode, freq count=count
        
 #4. Univariate Graphical EDA
