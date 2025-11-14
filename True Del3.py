@@ -44,9 +44,9 @@ Data_Insurance = Used_Data.loc[Used_Data['Insurance'] != 'ALL']
 #3. Univariate Non-Graphical EDA
     #numerical variable
 variable_num= [ "Denominator", "Number_with_outcome", "Rate_SF_pop"]
-var_num_summary = Used_Data.describe()
+var_num_summary = Used_Data[variable_num].describe()
 print(var_num_summary)
-print(Used_Data[variable_num].skew(), Used_Data[variable_num].kurt())
+print(Used_Data[variable_num].skew(), Used_Data[variable_num].kurt(), Used_Data[variable_num].mode(),Used_Data[variable_num].var())
 
     #categorical variable
 variable_cat= ["Age_group","Sex", "Health_condition-Data_source","Insurance", "Primary_Neighborhood", "Year", "Race_ethnicity"]
