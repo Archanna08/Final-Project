@@ -27,12 +27,12 @@ print(pd.DataFrame.isnull(Used_Data["Year"]).sum()) #To check if the rows were d
     #The sub-datasets that are used for the graphs to answer specific questions
 G_Screentime = Used_Data.loc[(Used_Data['Health_condition-Data_source']=='3 OR MORE HOURS SCREENTIME - YRBS SURVEY') & (Used_Data['Age_group'] !='GRADE6to8')]
 G_All_ER_visits = Used_Data.loc[(Used_Data['Health_condition-Data_source']=='ALL ER VISITS - ER VISITS')]
-G_Authorized_meds = Used_Data.loc[(Used_Data['Health_condition-Data_source']=='AUTHORIZED FOR PSYCHOTROPIC MEDICATIONS - CHILD WELFARE') & (Used_Data['Age_group']=='0to17')]
 G_Depression_admissions = Used_Data.loc[(Used_Data['Health_condition-Data_source']=='DEPRESSION - HOSPITAL ADMISSIONS')]
 G_Pub_Pri_Insurance = Used_Data.loc[(Used_Data['Health_condition-Data_source']=='PUBLIC INSURANCE - CDPH BIRTH RECORDS') 
                                   | (Used_Data['Health_condition-Data_source']=='PRIVATE INSURANCE - CDPH BIRTH RECORDS')]
         # | is equivalent to or 
-G_Alcohol = Used_Data.loc[Used_Data['Health_condition-Data_source']=='ALCOHOL - ER VISITS']
+G_Alcohol = Used_Data.loc[(Used_Data['Health_condition-Data_source']=='ALCOHOL - ER VISITS')]
+G_Al_fil = G_Alcohol[G_Alcohol['Primary_Neighborhood'] != 'All'] #Just for 6.2 j)
 G_Timely_med_exam = Used_Data.loc[Used_Data['Health_condition-Data_source']=='DID NOT RECEIVE TIMELY MEDICAL EXAM - CHILD WELFARE']
 G_HIV_tests = Used_Data.loc[(Used_Data['Health_condition-Data_source']=='NEVER TESTED FOR HIV - YRBS SURVEY') & (Used_Data['Age_group'] != 'GRADE9to12')]
 
@@ -78,14 +78,14 @@ g=sns.relplot(data= G_Depression_admissions, x= 'Number_with_outcome', y='Denomi
 g.fig.suptitle('Number of People that got Admitted for Depressions in the Survey', y=1.05)
 #c
 sns.relplot(data=G_Timely_med_exam, x='Year',y='Rate_SF_pop', kind='line').set(title='Percentage of Children getting Timely Medical Exams from 1998-2023')
-#d ?????
+#d standard deviation does not work
 sns.relplot(data= G_Alcohol, x='Denominator', y='Number_with_outcome', kind='line',errorbar='sd', height=4,aspect=2).set(title='Number of Alcoholics among People who took the Survey')
 
 #e
 sns.lmplot(data = G_Pub_Pri_Insurance , x= 'Denominator', y='Number_with_outcome', hue='Health_condition-Data_source').set(title='Number of Pregnant Women with Different Insurances from CDPH Birth Records')
 
     #6.2 Categorical data
-#a #spacing
+#a 
 sns.catplot(data=G_Timely_med_exam , x= 'Year', y='Rate_SF_pop', jitter= False,  height=4,aspect=4 ).set(title='Percentage of Timely Medical Exam from 1998-2023')
 
 #b
@@ -106,14 +106,14 @@ sns.catplot(data= G_Depression_admissions, x='Year', y='Number_with_outcome',hue
 #i 
 sns.catplot(data= G_Pub_Pri_Insurance, x='Health_condition-Data_source',y='Rate_SF_pop', hue='Sex', errorbar=('pi', 90), kind='point', height=4,aspect=2 ).set(title='Percentage of People with Public Insurance vs Private')
 
+#j WORDDDDDDDD!!!!!!!!!
+sns.catplot(data= G_Al_fil, x="Primary_Neighborhood", kind='count',height=10, aspect=5.5).set(title='The number of neighborhoods surveyed for alcohol use')
 
-#j????EACH CATEGORY?
-sns.catplot(data= G_Alcohol, )
 
     #6.3 Bivariate Distributions
 #a
 sns.displot(data= G_Screentime, x='Denominator', y='Number_with_outcome', binwidth=(60,50), cbar=True).set(title='Middle Schoolers Screentime')
 #b
 sns.displot(data= G_Pub_Pri_Insurance, x='Year', y='Rate_SF_pop',kind='kde').set(title='Percentage of People with Public vs Private Insurance')
-#c
-sns.displot(data= G_Alcohol, x='Year', y='Rate_SF_pop',hue='Sex',kind='kde').set(title='Percentage of People Alcoholic from 2016-2022')
+#c WORDDDDDDDDDDD!!!!!!!
+sns.displot(data= G_Alcohol, x='Year', y='Rate_SF_pop',hue='Sex',kind='kde').set(title='Percentage of people who used alcohol from 2016-2022')
