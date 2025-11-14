@@ -2,10 +2,14 @@
 """
 Created on Thu Nov  6 20:43:04 2025
 
-@author: Allison Leung, Archanna Nagesan
+@author: Allison Leung ID: 2487300 sect.00003, Archanna Nagesan ID: 2482545 sect.00004 
 
-!!!!!!!!!!!HEADER!!!!!!>>,., ,
+Programming in science – 420-SN1-RE  
+Tiago Bortoletto Vaz  
+Due Date: 16/11/2025  
 """
+#This Python script performs data cleaning, filtering, and exploratory data analysis on San Francisco Health survey on mothers, children and youth.
+#It also included both non-graphical summaries and graphical visualizations using Pandas and Seaborn.
 import pandas as pd
 import seaborn as sns
 
@@ -56,11 +60,11 @@ print(Used_Data[variable_cat].astype(str).describe()) #converting year as string
        
 #4. Univariate Graphical EDA
 for i in variable_num: #Not all the graphs generated here are used
-    sns.displot(data=G_HIV_tests, x=i, multiple="dodge", hue="Sex", bins=35)
-    sns.displot(data=G_HIV_tests, x=i, multiple="stack", hue="Age_group")
-    sns.displot(data=G_HIV_tests, x=i, kind="kde", hue="Year", bw_adjust=.5)
-    sns.displot(data=G_HIV_tests, x=i, hue="Year", element="step", stat='density')
-    sns.displot(data=G_HIV_tests, x=i, hue="Sex", kind="ecdf")
+    sns.displot(data=G_HIV_tests, x=i, multiple="dodge", hue="Sex", bins=35).set(title='Relationship between the Rate of the Population and the Sex')
+    sns.displot(data=G_HIV_tests, x=i, multiple="stack", hue="Age_group").set(title='Relationship between the Rate of the Population and the Age group')
+    sns.displot(data=G_HIV_tests, x=i, kind="kde", hue="Year", bw_adjust=.5).set(title='Relationship between the Rate of the Population and the Year')
+    sns.displot(data=G_HIV_tests, x=i, hue="Year", element="step", stat='density').set(title='Relationship between the Rate of the Population and the Years')
+    sns.displot(data=G_HIV_tests, x=i, hue="Sex", kind="ecdf").set(title='Relationship between the Rate of the Population and the Sex')
 
 #5. Multivariate Non-Graphical EDA ?????? Don't know what this is gonna tell us :)
 pd.crosstab(Data_Neighborhood["Primary_Neighborhood"], Data_Neighborhood["Sex"])
