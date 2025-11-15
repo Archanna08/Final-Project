@@ -60,11 +60,11 @@ print(Used_Data[variable_cat].astype(str).describe()) #converting year as string
        
 #4. Univariate Graphical EDA
 for i in variable_num: #Not all the graphs generated here are used
-    sns.displot(data=G_HIV_tests, x=i, multiple="dodge", hue="Sex", bins=35).set(title='Relationship between the Rate of the Population and the Sex')
-    sns.displot(data=G_HIV_tests, x=i, multiple="stack", hue="Age_group").set(title='Relationship between the Rate of the Population and the Age group')
-    sns.displot(data=G_HIV_tests, x=i, kind="kde", hue="Year", bw_adjust=.5).set(title='Relationship between the Rate of the Population and the Year')
-    sns.displot(data=G_HIV_tests, x=i, hue="Year", element="step", stat='density').set(title='Relationship between the Rate of the Population and the Years')
-    sns.displot(data=G_HIV_tests, x=i, hue="Sex", kind="ecdf").set(title='Relationship between the Rate of the Population and the Sex')
+    sns.displot(data=G_HIV_tests, x=i, multiple="dodge", hue="Sex", bins=35)
+    sns.displot(data=G_HIV_tests, x=i, multiple="stack", hue="Age_group")
+    sns.displot(data=G_HIV_tests, x=i, kind="kde", hue="Year", bw_adjust=.5)
+    sns.displot(data=G_HIV_tests, x=i, hue="Year", element="step", stat='density')
+    sns.displot(data=G_HIV_tests, x=i, hue="Sex", kind="ecdf")
 
 #5. Multivariate Non-Graphical EDA
 #a
