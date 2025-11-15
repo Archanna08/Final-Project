@@ -66,11 +66,15 @@ for i in variable_num: #Not all the graphs generated here are used
     sns.displot(data=G_HIV_tests, x=i, hue="Year", element="step", stat='density').set(title='Relationship between the Rate of the Population and the Years')
     sns.displot(data=G_HIV_tests, x=i, hue="Sex", kind="ecdf").set(title='Relationship between the Rate of the Population and the Sex')
 
-#5. Multivariate Non-Graphical EDA ?????? Don't know what this is gonna tell us :)
+#5. Multivariate Non-Graphical EDA
+#a
 pd.crosstab(Data_Neighborhood["Primary_Neighborhood"], Data_Neighborhood["Sex"])
-pd.crosstab(Data_Neighborhood["Primary_Neighborhood"], Data_Neighborhood["Race_ethnicity"])
+pd.crosstab(Data_Neighborhood["Primary_Neighborhood"], Data_Neighborhood["Year"])
 NG_Race_Insur = pd.crosstab(Data_Insurance["Race_ethnicity"], Data_Insurance["Insurance"])
+print(NG_Race_Insur)
+#c
 NG_Sex_Age_Insur = pd.crosstab([Data_sex["Age_group"], Data_sex["Sex"]], columns= Data_sex["Insurance"])
+print(NG_Sex_Age_Insur)
 
 print(pd.DataFrame.nunique(Data_sex)) #DELETE AFTER, JUST USED FOR CHECKING
 #6. Multivariate Graphical EDA
