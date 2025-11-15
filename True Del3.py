@@ -72,6 +72,8 @@ pd.crosstab(Data_Neighborhood["Primary_Neighborhood"], Data_Neighborhood["Sex"])
 pd.crosstab(Data_Neighborhood["Primary_Neighborhood"], Data_Neighborhood["Year"])
 NG_Race_Insur = pd.crosstab(Data_Insurance["Race_ethnicity"], Data_Insurance["Insurance"])
 print(NG_Race_Insur)
+#b
+pd.crosstab(Data_Insurance["Age_group"],Data_Insurance["Insurance"], normalize='index' )*100 #percentage
 #c
 NG_Sex_Age_Insur = pd.crosstab([Data_sex["Age_group"], Data_sex["Sex"]], columns= Data_sex["Insurance"])
 print(NG_Sex_Age_Insur)
